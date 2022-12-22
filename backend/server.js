@@ -1,16 +1,19 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import  initDbclient  from "./database.js";
 dotenv.config();
 
 const port = process.env.PORT || 9000;
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Runnig only pa ");
+  res.send("Running only pa ");
 });
 
 app.listen(port, () => {
-  console.log(`[⚡server] : Server Running on http://localhost:${port}`);
+    initDbclient();
+  console.log(`[⚡server ] : Server Running on http://localhost:${port}`);
 });

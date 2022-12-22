@@ -12,7 +12,7 @@ export const createUser = async (req, res) => {
   if (plainTextPassword.length < 6) {
     return res.json({
       status: "error",
-      error: "Password too small. Should be atleast 6 characters",
+      error: "Password too small. Should be at least 6 characters",
     });
   }
   const password = await bcrypt.hash(plainTextPassword, 10);
