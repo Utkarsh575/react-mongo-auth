@@ -1,8 +1,9 @@
 import bcrypt from "bcrypt";
-import User from "../model/User";
+import User from "../model/User.js";
 
 export const createUser = async (req, res) => {
   const { email, password: plainTextPassword } = req.body;
+
   if (!email || typeof email !== "string") {
     return res.json({ status: "error", error: "Invalid Email" });
   }
@@ -20,6 +21,9 @@ export const createUser = async (req, res) => {
     const user = new User({
       email,
       password,
+      firstName: "",
+      lastName: "",
+      gender: "",
     });
     const response = await user.save();
     res.json({ status: "ok" });
