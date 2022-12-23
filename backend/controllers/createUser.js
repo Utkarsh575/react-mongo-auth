@@ -2,7 +2,13 @@ import bcrypt from "bcrypt";
 import User from "../model/User.js";
 
 export const createUser = async (req, res) => {
-  const { email, password: plainTextPassword ,lastName="", firstName="" , gender=""} = req.body;
+  const {
+    email,
+    password: plainTextPassword,
+    lastName = "",
+    firstName = "",
+    gender = "",
+  } = req.body;
 
   if (!email || typeof email !== "string") {
     return res.json({ status: "error", error: "Invalid Email" });
@@ -29,10 +35,16 @@ export const createUser = async (req, res) => {
     res.json({ status: "ok" });
   } catch (error) {
     if (error.errors.email.kind) {
-      return res.json({ status: "error", error: "User already exists" });
+      return res.json({
+        status: "error",
+        error: "User already exists try Sign In maybe !!",
+      });
     }
     if (error.code === 11000) {
-      return res.json({ status: "error", error: "User already exists" });
+      return res.json({
+        status: "error",
+        error: "User already exists try Sign In maybe !!",
+      });
     }
     throw error;
   }
