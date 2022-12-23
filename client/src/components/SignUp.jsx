@@ -12,7 +12,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:5000/router/create";
+    const url = "react-mongo-auth-production.up.railway.app/router/create";
     const { data: res } = await axios.post(url, data);
     console.log(res.status);
     if (res.status === "error") {
