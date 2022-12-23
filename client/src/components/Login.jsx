@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const url = "react-mongo-auth-production.up.railway.app/router/login";
+    const url = "https://react-mongo-auth-production.up.railway.app/router/login";
     const { data: res } = await axios.post(url, data);
 
     

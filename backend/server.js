@@ -9,13 +9,12 @@ const port = process.env.PORT || 9000;
 const app = express();
 app.use(express.json());
 app.use(cors());
-
+initDbclient();
 app.get("/", (req, res) => {
   res.send("[ ⚡SERVER ]:- Server is running... ");
 });
 app.use("/router", router);
 
 app.listen(port, () => {
-  initDbclient();
   console.log(`[⚡server ] : Server Running on http://localhost:${port}`);
 });
